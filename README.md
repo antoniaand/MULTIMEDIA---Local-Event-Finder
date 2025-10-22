@@ -1,2 +1,2 @@
-# MULTIMEDIA---Local-Event-Finder
+# EventsHUB 
 Multimedia Project: Local Event Finder Application
