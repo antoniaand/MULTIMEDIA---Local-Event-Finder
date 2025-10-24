@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;900&display=swap');
 
 :root {
-    --primary-color: #79A3B1;
-    --secondary-color: #C8D9B0;
-    --text-color: #3f5159; 
-    --bg-color: #F8F8F8; 
+    --primary-color: #5D9CBA;
+    --secondary-color: #B0D980; 
+    --text-color: #2e434c; 
+    --bg-color: #fcfcfc; 
     --card-bg: #FFFFFF;
     
     --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -46,7 +46,7 @@ header h1 {
 }
 
 nav a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
     margin-left: 1.5rem;
     transition: all var(--transition-speed);
@@ -97,7 +97,7 @@ main {
 #city-input:focus {
     border-color: var(--primary-color); 
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(121, 163, 177, 0.25); 
+    box-shadow: 0 0 0 0.25rem rgba(93, 156, 186, 0.35); 
 }
 
 
@@ -114,7 +114,7 @@ button {
 }
 
 button:hover {
-    background-color: #6a909c; 
+    background-color: #50849c; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
     transform: translateY(-2px);
 }
@@ -172,7 +172,7 @@ button:hover {
     max-width: 800px;
     height: 400px;
     margin: 2rem auto;
-    border: 1px solid var(--border-color);
+    border: 1px solid #ced4da;
     background-color: #e9ecef; 
     border-radius: var(--radius-default);
     box-shadow: var(--shadow-sm);
@@ -180,10 +180,10 @@ button:hover {
 
 /* Footer (Fixed Position) */
 footer {
-    text-align: center;
-    padding: 1rem;
     background-color: var(--primary-color);
     color: white;
+    text-align: center;
+    padding: 1rem;
     position: fixed; 
     bottom: 0;
     width: 100%;
