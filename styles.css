@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;900&display=swap');
 
-/* Commit 1: Foundation and Typography */
+/* Commit 2: Header and Page Flow */
 
 :root {
     --primary-color: #79A3B1;
@@ -27,4 +27,41 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     padding-bottom: 4rem;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--bg-color); 
+    padding: 1.25rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: all var(--transition-speed);
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--secondary-color); 
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+main {
+    padding: 2.5rem 5%;
+    max-width: 1200px;
+    margin: auto;
 }
