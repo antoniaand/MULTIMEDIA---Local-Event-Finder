@@ -47,7 +47,6 @@
     marker.bindPopup(popupHtml, { minWidth: 220, maxWidth: 320 });
 
     marker.on("mouseover", () => marker.openPopup());
-    marker.on("mouseout", () => marker.closePopup());
   }
 
   if (typeof EVENTS !== "undefined" && Array.isArray(EVENTS) && EVENTS.length > 0) {
@@ -93,4 +92,21 @@
 
     map.setView([lat, lng], 14, { animate: true });
   });
+  document.getElementById("search-btn").addEventListener("click", async () => {
+  const city = document.getElementById("city-input").value.trim();
+  if (!city) return alert("Please enter a location.");
+
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`);
+    const data = await res.json();
+    if (data.length === 0) return alert("Location not found.");
+
+    const { lat, lon } = data[0];
+    document.dispatchEvent(new CustomEvent("user-location", { detail: { lat: parseFloat(lat), lng: parseFloat(lon) } }));
+  } catch (err) {
+    console.error(err);
+    alert("Failed to locate the city. Try again.");
+  }
+});
+
 })();
