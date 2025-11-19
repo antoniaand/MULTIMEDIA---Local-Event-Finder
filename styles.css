@@ -163,17 +163,60 @@ button:hover {
     opacity: 0.85;
 }
 
-#event-map {
-    display: block; 
+
+#map {
     width: 100%;
-    max-width: 800px;
-    height: 400px;
-    margin: 2rem auto;
-    border: 1px solid #ced4da;
-    background-color: #e9ecef; 
+    height: 420px; 
+    margin: 1.5rem auto;
     border-radius: var(--radius-default);
     box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
+
+.leaflet-popup-content .popup-card {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text-color);
+}
+.popup-title {
+    color: var(--primary-color);
+    margin: 0 0 0.35rem 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+.popup-thumb {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+.popup-audio {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.map-legend {
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+.map-legend .legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+}
+
 
 
 footer {
