@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Local Event Finder | Multimedia Project</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-sA+e2kFQqX0v3l7F5Dq6o4q8G8k1wQm+7g5f2o6+g8o="
+      crossorigin=""
+    />
+
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <header>
@@ -31,9 +39,7 @@
         <section id="map-section">
             <h2>Local Events Map</h2>
 
-            <canvas id="event-map" width="800" height="400">
-                Your browser does not support the HTML5 Canvas tag.
-            </canvas>
+            <div id="map" aria-label="Local events map"></div>
         </section>
 
         <section id="event-list">
@@ -69,7 +75,16 @@
         <p>&copy; 2025 Local Event Finder. Multimedia Project by Antonia and Cristian.</p>
     </footer>
 
-    <script src="script.js"></script>
+   
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-kxQpM4T58m1UKK2mE8z7s3p1a6bZb1k5m6QVX0Q8Y7g="
+      crossorigin=""
+    ></script>
 
+
+    <script src="scripts/events.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
