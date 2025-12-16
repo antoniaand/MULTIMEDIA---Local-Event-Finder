@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Local Event Finder | Multimedia Project</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Event Finder | Multimedia Project</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-  <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
     <header>
         <h1>Local Event Finder</h1>
         <nav>
-            <a href="#events">Events</a>
-            <a href="#map">Map</a>
+            <a href="#event-list">Events</a>
+            <a href="#map-section">Map</a>
             <a href="#about">About</a>
         </nav>
+
     </header>
 
     <main>
@@ -35,35 +38,106 @@
             <h2>Local Events Map</h2>
 
             <div id="map" aria-label="Local events map"></div>
+            <p class="map-tip">Tip: hover a marker to preview details, then press Play for the audio preview 🎧</p>
         </section>
 
         <section id="event-list">
             <h2>Upcoming Events</h2>
+            <div id="events-container"></div>
+        </section>
 
-            <div class="event-card">
-                <h3>Jazz Festival 🎷</h3>
-                <p>Location: Central Park</p>
-                <p>Date: October 2025</p>
-                <div class="multimedia-placeholder">Video Preview (Stage 4)</div>
+        <section id="about" class="about-section">
+            <div class="about-hero">
+                <div class="about-hero-text">
+                    <h2>About Local Event Finder</h2>
+                    <p class="about-lead">
+                        A simple idea that grew into a place where you can discover what’s happening near you —
+                        from music nights and food fairs to workshops and city tours.
+                    </p>
 
-                <audio controls class="audio-placeholder">
-                    <source src="assets/audio/jazz-promo.mp3" type="audio/mp3">
-                    Your browser does not support the Audio API (Stage 3).
-                </audio>
+                    <div class="about-cta-row">
+                        <a class="about-cta" href="#map-section">Explore the map</a>
+                        <a class="about-cta secondary" href="#event-list">Browse events</a>
+                    </div>
+                </div>
+
+                <div class="about-hero-highlight">
+                    <div class="about-highlight-card">
+                        <h3>✨ Our story</h3>
+                        <p>
+                            It started with one problem: events were scattered everywhere — Instagram stories,
+                            random posters, and different websites. We wanted one clean place to explore them,
+                            see locations quickly, and get a feel for the vibe before going.
+                        </p>
+                        <p>
+                            That’s why we added audio previews: a short promo can tell you more than a paragraph.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="event-card">
-                <h3>Tech Workshop 💻</h3>
-                <p>Location: University Hall</p>
-                <p>Date: November 2025</p>
-                <div class="multimedia-placeholder">Video Preview (Stage 4)</div>
+            <div class="about-panels">
+                <div class="about-panel">
+                    <h3>How it started</h3>
+                    <p>
+                        We began by listing a few events we’d personally want to attend. Then we added a map,
+                        so you can see where everything is at a glance. Finally, we added audio previews to
+                        make the experience feel more “real” — like a mini trailer for each event.
+                    </p>
+                </div>
 
-                <audio controls class="audio-placeholder">
-                    <source src="assets/audio/tech-promo.mp3" type="audio/mp3">
-                    Your browser does not support the Audio API (Stage 3).
-                </audio>
+                <div class="about-panel">
+                    <h3>What we believe</h3>
+                    <ul class="about-list">
+                        <li><strong>Simple browsing:</strong> no clutter, just useful info.</li>
+                        <li><strong>Fast decisions:</strong> map + quick previews helps you pick.</li>
+                        <li><strong>Local energy:</strong> highlight events that bring people together.</li>
+                    </ul>
+                </div>
+
+                <div class="about-panel">
+                    <h3>What’s next</h3>
+                    <p>
+                        We’re planning to add short video previews and better filters (music, food, tech, art),
+                        so it’s even easier to find your type of event.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat"><span>6</span><small>events</small></div>
+                        <div class="about-stat"><span>1</span><small>interactive map</small></div>
+                        <div class="about-stat"><span>6</span><small>audio previews</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-timeline">
+                <h3>Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <div class="content">
+                            <strong>Idea</strong>
+                            <p>We wanted a single place to explore local events without jumping between apps.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <div class="content">
+                            <strong>Map</strong>
+                            <p>We added interactive markers so location becomes part of the decision.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <div class="content">
+                            <strong>Audio previews</strong>
+                            <p>Short promos help you feel the vibe instantly — not just read about it.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+
     </main>
 
     <footer>
@@ -73,7 +147,9 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script src="scripts/events.js"></script>
+    <script src="scripts/audio.js"></script>
     <script src="scripts/map.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
