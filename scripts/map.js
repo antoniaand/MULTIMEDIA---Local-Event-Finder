@@ -39,12 +39,35 @@
         <p class="popup-location"><strong>${ev.locationName}</strong> — ${ev.date}</p>
         <p class="popup-desc">${ev.description || ""}</p>
         ${ev.image ? `<img class="popup-thumb" src="${ev.image}" alt="${ev.name}">` : ""}
-        ${ev.audio ? `<audio controls class="popup-audio"><source src="${ev.audio}" type="audio/mpeg">Your browser does not support audio.</audio>` : ""}
+        ${ev.audio ? `
+  <div class="popup-audio-controls" data-audio="${ev.audio}">
+    <button type="button" class="popup-audio-play">Play</button>
+    <button type="button" class="popup-audio-pause">Pause</button>
+    <button type="button" class="popup-audio-stop">Stop</button>
+  </div>
+` : ""}
+
         <div style="margin-top: 0.5rem;"><a href="#event-${ev.id}" class="popup-link">View details</a></div>
       </div>
     `;
 
     marker.bindPopup(popupHtml, { minWidth: 220, maxWidth: 320 });
+    marker.on("popupopen", (e) => {
+      const el = e.popup.getElement();
+      if (!el) return;
+
+      const controls = el.querySelector(".popup-audio-controls");
+      if (!controls) return;
+
+      const src = controls.dataset.audio;
+      const playBtn = el.querySelector(".popup-audio-play");
+      const pauseBtn = el.querySelector(".popup-audio-pause");
+      const stopBtn = el.querySelector(".popup-audio-stop");
+
+      playBtn?.addEventListener("click", () => window.AudioController?.play(src));
+      pauseBtn?.addEventListener("click", () => window.AudioController?.togglePause());
+      stopBtn?.addEventListener("click", () => window.AudioController?.stop());
+    });
 
     marker.on("mouseover", () => marker.openPopup());
   }
@@ -93,20 +116,20 @@
     map.setView([lat, lng], 14, { animate: true });
   });
   document.getElementById("search-btn").addEventListener("click", async () => {
-  const city = document.getElementById("city-input").value.trim();
-  if (!city) return alert("Please enter a location.");
+    const city = document.getElementById("city-input").value.trim();
+    if (!city) return alert("Please enter a location.");
 
-  try {
-    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`);
-    const data = await res.json();
-    if (data.length === 0) return alert("Location not found.");
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`);
+      const data = await res.json();
+      if (data.length === 0) return alert("Location not found.");
 
-    const { lat, lon } = data[0];
-    document.dispatchEvent(new CustomEvent("user-location", { detail: { lat: parseFloat(lat), lng: parseFloat(lon) } }));
-  } catch (err) {
-    console.error(err);
-    alert("Failed to locate the city. Try again.");
-  }
-});
+      const { lat, lon } = data[0];
+      document.dispatchEvent(new CustomEvent("user-location", { detail: { lat: parseFloat(lat), lng: parseFloat(lon) } }));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to locate the city. Try again.");
+    }
+  });
 
 })();
