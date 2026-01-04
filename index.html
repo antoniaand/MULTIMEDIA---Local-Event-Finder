@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local Event Finder | Multimedia Project</title>
+    <title>EventsHUB | Multimedia Project</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <h1>Local Event Finder</h1>
+        <h1>EventsHUB</h1>
         <nav>
             <a href="#event-list">Events</a>
             <a href="#map-section">Map</a>
@@ -46,10 +46,24 @@
             <div id="events-container"></div>
         </section>
 
+        <section id="canvas-visualization">
+             <h2>Event Activity Visualization</h2>
+             <canvas id="eventsCanvas" width="800" height="400"></canvas>
+        </section>
+
+        <section id="video-preview">
+              <h2>Event Preview</h2>
+              <video width="320" controls muted>
+                <source src="assets/event.mp4" type="video/mp4">
+              </video>
+        </section>
+
+
+
         <section id="about" class="about-section">
             <div class="about-hero">
                 <div class="about-hero-text">
-                    <h2>About Local Event Finder</h2>
+                    <h2>About EventsHUB</h2>
                     <p class="about-lead">
                         A simple idea that grew into a place where you can discover what’s happening near you —
                         from music nights and food fairs to workshops and city tours.
@@ -141,7 +155,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Local Event Finder. Multimedia Project by Antonia and Cristian.</p>
+        <p>&copy; 2025 EventsHUB. Multimedia Project by Antonia and Cristian.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

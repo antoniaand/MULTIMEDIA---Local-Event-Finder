@@ -66,3 +66,6 @@ const EVENTS = [
     description: "Guided tours to discover history and architecture inside the Palace."
   }
 ];
+
+const eventStats = getEventStats(events);
+
