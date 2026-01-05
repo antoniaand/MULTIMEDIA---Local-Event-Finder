@@ -10,21 +10,16 @@
   }
 
   function ensure(src) {
-    // If switching tracks, stop previous
     if (audio && currentSrc && currentSrc !== src) {
       stopInternal();
     }
 
-    // If no audio yet, or new track -> create a new Audio object
     if (!audio || currentSrc !== src) {
       audio = new Audio(src);
       audio.volume = 0.75;
       currentSrc = src;
 
-      // Optional: cleanup when finished
       audio.addEventListener("ended", () => {
-        // keep object (fine), or reset if you prefer:
-        // audio = null; currentSrc = null;
       });
     }
 

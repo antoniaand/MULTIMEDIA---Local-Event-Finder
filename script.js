@@ -99,20 +99,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ---- CANVAS CHART CODE ----
   const canvas = document.getElementById("eventsCanvas");
 
   if (canvas && typeof EVENTS !== "undefined") {
 
-    // <-- ADD THIS: generate eventStats from EVENTS -->
-    const eventStats = getEventStats(EVENTS);
+    function getCategoryStats(events) {
+      const counts = {};
+      events.forEach(ev => {
+        const cat = ev.category || "Other";
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+
+      return Object.keys(counts).map(key => ({
+        name: key,
+        value: counts[key]
+      }));
+    }
+
+    const eventStats = getCategoryStats(EVENTS);
 
     const ctx = canvas.getContext("2d");
-    const colors = ["#4A90E2", "#F5A623", "#7ED321", "#BD10E0"];
+    const categoryColors = {
+      "Music": "#4A90E2",
+      "Tech": "#F5A623",
+      "Food": "#7ED321",
+      "Art": "#BD10E0",
+      "Other": "#9B9B9B"
+    };
 
-    const eventsData = eventStats.map((event, index) => ({
-      ...event,
-      color: colors[index % colors.length]
+    const eventsData = eventStats.map((cat) => ({
+      ...cat,
+      color: categoryColors[cat.name] || "#5D9CBA"
     }));
 
     const padding = 50;
@@ -130,10 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#2e434c";
-      ctx.font = "700 16px 'Nunito Sans'";
-      ctx.fillText("Event Popularity Overview", padding, 28);
+      ctx.font = "700 18px 'Nunito Sans'";
+      ctx.textAlign = "left"; 
+      ctx.fillText("Event Activity by Category", padding, 30);
 
       ctx.strokeStyle = "rgba(0,0,0,0.05)";
+      ctx.shadowBlur = 0; 
       for (let i = 0; i <= 5; i++) {
         const y = padding + (chartHeight / 5) * i;
         ctx.beginPath();
@@ -143,22 +162,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       eventsData.forEach((event, index) => {
-        const x = padding + index * 120;
+        const x = padding + index * 140;
         const fullHeight = (event.value / maxValue) * chartHeight;
         const height = fullHeight * progress;
         const y = canvas.height - padding - height;
 
+        ctx.save();
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "rgba(0,0,0,0.15)";
         ctx.fillStyle = event.color;
-        ctx.fillRect(x, y, barWidth, height);
+
+        ctx.beginPath();
+        ctx.roundRect(x, y, barWidth, height, [12, 12, 0, 0]);
+        ctx.fill();
+        ctx.restore();
 
         ctx.fillStyle = "#2e434c";
-        ctx.font = "600 13px 'Nunito Sans'";
-        ctx.fillText(event.name, x + 5, canvas.height - padding + 18);
+        ctx.font = "700 14px 'Nunito Sans'";
+        ctx.textAlign = "center";
+        ctx.fillText(event.name, x + barWidth / 2, canvas.height - padding + 25);
 
         if (hoveredIndex === index) {
           ctx.fillStyle = "#000";
-          ctx.font = "700 14px 'Nunito Sans'";
-          ctx.fillText(event.value, x + 10, y - 8);
+          ctx.font = "800 15px 'Nunito Sans'";
+          ctx.fillText(event.value, x + barWidth / 2, y - 10);
         }
       });
     }
@@ -176,15 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     animate();
 
-  function getEventStats(events) {
-  // Each event is a bar, value is 1
-  return events.map(event => ({
-    name: event.name || "Unnamed Event",
-    value: 1
-  }));
-}
-
-
     canvas.addEventListener("mousemove", (e) => {
       const rect = canvas.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
@@ -193,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hoveredIndex = -1;
 
       eventsData.forEach((event, index) => {
-        const x = padding + index * 120;
+        const x = padding + index * 140;
         const height = (event.value / maxValue) * chartHeight;
         const y = canvas.height - padding - height;
 

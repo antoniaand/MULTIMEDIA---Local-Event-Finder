@@ -2,11 +2,8 @@
 
 :root {
     --primary-color: #4A90E2;
-    /* vibrant blue */
     --secondary-color: #F5A623;
-    /* warm accent */
     --accent-color: #7ED321;
-    /* energetic green */
     --danger-color: #E94E77;
 
     --text-color: #2e434c;
@@ -230,7 +227,7 @@ button:hover {
 .leaflet-popup-content {
     max-width: 280px;
     overflow: hidden;
-   
+
 }
 
 .popup-card {
@@ -251,9 +248,9 @@ button:hover {
     height: auto;
 
     max-height: 140px;
-  
+
     object-fit: cover;
-  
+
 
     border-radius: 12px;
     margin-top: 0.6rem;
@@ -378,7 +375,7 @@ footer {
     display: block;
     width: 100%;
     height: 300px;
- 
+
     object-fit: cover;
 
     object-position: center;
@@ -390,7 +387,7 @@ footer {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
     border: 2px solid rgba(255, 255, 255, 0.8);
 
- 
+
     filter: contrast(1.08) saturate(1.12) brightness(1.02);
 }
 
@@ -580,4 +577,80 @@ footer {
     .about-panels {
         grid-template-columns: 1fr;
     }
+}
+
+#canvas-visualization {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    margin: 3rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+#canvas-visualization h2 {
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+#eventsCanvas {
+    max-width: 100%;
+    height: auto !important;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+#eventsCanvas:hover {
+    transform: scale(1.01);
+}
+
+.featured-preview {
+    background: #1a1a1a;
+    padding: 3rem 2rem;
+    border-radius: 24px;
+    color: white;
+    margin: 3rem 0;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.preview-header {
+    margin-bottom: 2rem;
+}
+
+.category-tag.tech {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.video-container {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.shadow-glow {
+    box-shadow: 0 0 30px rgba(74, 144, 226, 0.3);
+}
+
+#main-preview-video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }

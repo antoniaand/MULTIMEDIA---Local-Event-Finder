@@ -2,6 +2,7 @@ const EVENTS = [
   {
     id: 1,
     name: "Jazz Festival",
+    category: "Music",
     locationName: "Central Park",
     date: "October 2025",
     lat: 44.439663,
@@ -13,6 +14,7 @@ const EVENTS = [
   {
     id: 2,
     name: "Tech Workshop",
+    category: "Tech",
     locationName: "University Hall",
     date: "November 2025",
     lat: 44.437825,
@@ -24,6 +26,7 @@ const EVENTS = [
   {
     id: 3,
     name: "Street Food Fair",
+    category: "Food",
     locationName: "Old Town Promenade",
     date: "October 18, 2025",
     lat: 44.439000,
@@ -35,6 +38,7 @@ const EVENTS = [
   {
     id: 4,
     name: "Open-Air Cinema",
+    category: "Entertainment",
     locationName: "Herastrau Park",
     date: "September 2025",
     lat: 44.467800,
@@ -46,6 +50,7 @@ const EVENTS = [
   {
     id: 5,
     name: "Art Expo",
+    category: "Art",
     locationName: "Museum Quarter",
     date: "November 5, 2025",
     lat: 44.438000,
@@ -57,6 +62,7 @@ const EVENTS = [
   {
     id: 6,
     name: "Parliament Tour",
+    category: "History",
     locationName: "Palace of Parliament",
     date: "Ongoing (booked slots)",
     lat: 44.426800,

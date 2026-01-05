@@ -47,15 +47,23 @@
         </section>
 
         <section id="canvas-visualization">
-             <h2>Event Activity Visualization</h2>
-             <canvas id="eventsCanvas" width="800" height="400"></canvas>
+            <h2>Event Activity Visualization</h2>
+            <canvas id="eventsCanvas" width="950" height="400"></canvas>
         </section>
 
-        <section id="video-preview">
-              <h2>Event Preview</h2>
-              <video width="320" controls muted>
-                <source src="assets/event.mp4" type="video/mp4">
-              </video>
+        <section id="video-preview" class="featured-preview">
+            <div class="preview-header">
+                <span class="category-tag tech">Featured: Tech</span>
+                <h2>Tech Workshop: Live Preview</h2>
+                <p>Go behind the scenes of our upcoming multimedia API session.</p>
+            </div>
+
+            <div class="video-container shadow-glow">
+                <video id="main-preview-video" controls muted poster="assets/images/tech-thumb.jpg">
+                    <source src="assets/event.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </section>
 
 
